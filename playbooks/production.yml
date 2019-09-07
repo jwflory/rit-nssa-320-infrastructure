@@ -1,0 +1,10 @@
+---
+- name: synchronize production host
+  hosts: production
+  become: yes
+
+  roles:
+    - { role: base/centos-7, tags: base }
+    - { role: firewalld, tags: firewalld }
+    - { role: mariadb, tags: mariadb }
+    - { role: yum-cron, tags: yum-cron }
