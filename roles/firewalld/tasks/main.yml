@@ -1,0 +1,14 @@
+---
+- name: install firewalld and fail2ban
+  package:
+    state: present
+    name:
+      - fail2ban
+      - fail2ban-firewalld
+      - firewalld
+
+- name: start/enable firewalld
+  service:
+    name: firewalld
+    state: started
+    enabled: yes
