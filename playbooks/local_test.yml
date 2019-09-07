@@ -1,0 +1,7 @@
+---
+- name: test playbooks in a local Vagrant virtual machine
+  hosts: dev
+  become: yes
+
+  roles:
+    - base/centos-7

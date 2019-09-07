@@ -1,0 +1,12 @@
+[dev]
+127.0.0.1 ansible_connection=local
+
+[centos7]
+
+[centos7:vars]
+ansible_user=ansible_runner
+
+[production]
+
+[staging]
+
