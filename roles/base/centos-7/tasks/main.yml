@@ -22,3 +22,15 @@
   selinux:
     policy: targeted
     state: enforcing
+
+- name: Create user accounts and add users to groups
+  user:
+    name: "{{ item }}"
+    groups: "admin"
+  with_items: "{{ users }}"
+
+- name: Add authorized keys
+  authorized_key:
+    user: "{{ item }}"
+    key: "{{ lookup('file', 'files/'+ item + '.key.pub') }}"
+  with_items: "{{ users }}"
