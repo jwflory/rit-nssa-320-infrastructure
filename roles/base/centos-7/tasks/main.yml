@@ -23,6 +23,17 @@
     policy: targeted
     state: enforcing
 
+- hosts: 'localhost'
+  connection: 'local'
+  vars:
+    users:
+    - "eam8730"
+    - "hxl5315"
+    - "jwf9260"
+    - "fma7473"
+    - "bxa2168"
+    - "stv9643"
+
 - name: Create user accounts and add users to groups
   user:
     name: "{{ item }}"
