@@ -23,25 +23,14 @@
     policy: targeted
     state: enforcing
 
-- hosts: 'localhost'
-  connection: 'local'
-  vars:
-    users:
-    - "eam8730"
-    - "hxl5315"
-    - "jwf9260"
-    - "fma7473"
-    - "bxa2168"
-    - "stv9643"
-
 - name: Create user accounts and add users to groups
   user:
     name: "{{ item }}"
     groups: "admin"
-  with_items: "{{ users }}"
+  loop: "{{ authorized_users }}"
 
 - name: Add authorized keys
   authorized_key:
     user: "{{ item }}"
     key: "{{ lookup('file', 'files/'+ item + '.key.pub') }}"
-  with_items: "{{ users }}"
+  loop: "{{ authorized_users }}"
