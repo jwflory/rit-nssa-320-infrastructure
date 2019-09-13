@@ -2,6 +2,7 @@ RIT NSSA-320 infrastructure (Fall 2019)
 =======================================
 
 [![_License_: 2-clause BSD License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause "2-clause BSD License")
+[![Build Status on Travis CI](https://travis-ci.com/jwflory/rit-nssa-320-infrastructure.svg?branch=master)](https://travis-ci.com/jwflory/rit-nssa-320-infrastructure)
 
 Configuration management for lab assignments in NSSA-320 Configuration Management course at the Rochester Institute of Technology
 
