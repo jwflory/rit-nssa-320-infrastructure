@@ -1,2 +1,2 @@
 ---
-- import_playbook: production.yml
+- import_playbook: centos7.yml
