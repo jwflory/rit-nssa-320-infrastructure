@@ -43,22 +43,20 @@
     state: present
   loop: "{{ authorized_users }}"
 
-- name: Disable Password Authentication
+- name: sshd - Disable Password Authentication
   lineinfile:
-    dest=/etc/ssh/sshd_config
-    regexp='^PasswordAuthentication'
-    line="PasswordAuthentication no"
-    state=present
-    backup=yes
+    dest: /etc/ssh/sshd_config
+    regexp: '^PasswordAuthentication'
+    line: "PasswordAuthentication no"
+    state: present
+    backup: yes
 
-- name: Disable Root Login
+- name: sshd - Disable Root Login
   lineinfile:
-    dest=/etc/ssh/sshd_config
-    regexp='^PermitRootLogin'
-    line="PermitRootLogin no"
-    state=present
-    backup=yes
+    dest: /etc/ssh/sshd_config
+    regexp: '^PermitRootLogin'
+    line: "PermitRootLogin no"
+    state: present
+    backup: yes
   notify:
     - restart ssh
-
-
