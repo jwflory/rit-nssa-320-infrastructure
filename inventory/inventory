@@ -12,5 +12,8 @@
 10.0.1.2
 10.0.1.3
 
+[centos7:vars]
+ansible_password=student
+
 [rhel8]
 10.0.1.5  # standalone RHEL 8 server to experiment with
