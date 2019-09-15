@@ -26,11 +26,38 @@
 - name: Create user accounts and add users to groups
   user:
     name: "{{ item }}"
+    shell: /bin/bash
     groups: "admin"
+  loop: "{{ authorized_users }}"
+
+- name: Add users to the sudoers
+  copy:
+    dest: "/etc/sudoers.d/{{ item }}"
+    content: "{{ item }}  ALL=(ALL)  NOPASSWD: ALL"
   loop: "{{ authorized_users }}"
 
 - name: Add authorized keys
   authorized_key:
     user: "{{ item }}"
-    key: "{{ lookup('file', 'files/'+ item + '.key.pub') }}"
+    key: "{{ lookup('file', '/home/'+ item +'/.ssh/id_ed25519.pub') }}"
+    state: present
   loop: "{{ authorized_users }}"
+
+- name: Disable Password Authentication
+  lineinfile:
+    dest=/etc/ssh/sshd_config
+    regexp='^PasswordAuthentication'
+    line="PasswordAuthentication no"
+    state=present
+    backup=yes
+
+- name: Disable Root Login
+  lineinfile:
+    dest=/etc/ssh/sshd_config
+    regexp='^PermitRootLogin'
+    line="PermitRootLogin no"
+    state=present
+    backup=yes
+  notify:
+    - restart ssh
+
