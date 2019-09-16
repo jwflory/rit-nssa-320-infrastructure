@@ -42,21 +42,3 @@
     key: "{{ lookup('file', '/home/'+ item +'/.ssh/id_ed25519.pub') }}"
     state: present
   loop: "{{ authorized_users }}"
-
-- name: sshd - Disable Password Authentication
-  lineinfile:
-    dest: /etc/ssh/sshd_config
-    regexp: '^PasswordAuthentication'
-    line: "PasswordAuthentication no"
-    state: present
-    backup: yes
-
-- name: sshd - Disable Root Login
-  lineinfile:
-    dest: /etc/ssh/sshd_config
-    regexp: '^PermitRootLogin'
-    line: "PermitRootLogin no"
-    state: present
-    backup: yes
-  notify:
-    - restart ssh
