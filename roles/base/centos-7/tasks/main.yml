@@ -23,6 +23,10 @@
     policy: targeted
     state: enforcing
 
+- name: Create admin group
+  group:
+    name: admin
+
 - name: Create user accounts and add users to groups
   user:
     name: "{{ item }}"
