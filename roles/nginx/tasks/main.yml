@@ -1,0 +1,85 @@
+---
+- name: import global variables
+  include_vars:
+    dir: "{{ inventory_dir }}/group_vars/"
+
+- name: install/upgrade nginx
+  package:
+    name: nginx
+    state: latest
+
+- name: configure nginx
+  template:
+    src: "files/nginx.conf"
+    dest: "/etc/nginx/nginx.conf"
+    serole: object_r
+    setype: httpd_config_t
+    seuser: system_u
+  notify: restart nginx
+
+- name: add firewall rules for http/https
+  firewalld:
+    service: "{{ item }}"
+    immediate: yes
+    permanent: true
+    state: enabled
+  loop:
+    - http
+    - https
+
+- name: create group for web development permissions
+  group: name=www-admin
+
+- name: create system user for web development permissions
+  user:
+    comment: "system user for managing website deployments - do not use"
+    create_home: no
+    group: www-admin
+    home: "/var/www"
+    name: www-admin
+    system: yes
+
+- name: add authorized users to web development group
+  user:
+    append: yes
+    groups: www-admin
+    name: "{{ item }}"
+  loop: "{{ authorized_users }}"
+
+- name: create root web directory (/var/www/)
+  file:
+    state: directory
+    path: "/var/www/"
+    mode: 0755
+    setype: httpd_sys_content_t
+    seuser: system_u
+
+- name: create default server block root directory
+  file:
+    state: directory
+    path: "/var/www/html/"
+    mode: 0755
+    group: www-admin
+    owner: www-admin
+    setype: httpd_sys_content_t
+    seuser: system_u
+
+- name: copy default html pages
+  copy:
+    src: "files/html/{{ item }}"
+    dest: "/var/www/html/{{ item }}"
+    mode: 0644
+    group: www-admin
+    owner: www-admin
+    setype: httpd_sys_content_t
+  loop:
+    - 404.html
+    - 50x.html
+    - index.html
+    - nginx-logo.png
+    - poweredby.png
+
+- name: start nginx
+  service:
+    name: nginx
+    state: started
