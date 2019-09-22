@@ -304,4 +304,5 @@ $RECYCLE.BIN/
 *.lnk
 
 
-
+# Ansible Vault passwd
+.vault_passwd
