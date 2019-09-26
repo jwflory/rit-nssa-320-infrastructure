@@ -1,0 +1,8 @@
+---
+# Variables for Role Certbot certs.
+certbot_create_if_missing: "false"
+certbot_create_method: "standalone"
+certbot_admin_email: youremailidcertbot_create_standalone_stop_services:
+  - nginxapache_vhosts:
+    - "{servername: "abcyourdomain.com", documentroot: "/var/www/abcyourdomain.com"}"
+    - "{servername: "abcyourdomain1.com", documentroot: "/var/www/abcyourdomain1.com"}"
