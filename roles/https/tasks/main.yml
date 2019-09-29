@@ -20,7 +20,7 @@
 - name: Stop services to allow certbot to generate a cert.
   service:
    name: "{{ item }}"
-    state: stopped
+   state: stopped
   with_items:
    -"{{ certbot_create_standalone_stop_services }}"
 
@@ -29,9 +29,9 @@
 --email {{ certbot_admin_email }} -d {{ item.item.servername}}"
   with_items: "{{ letsencrypt_cert.results }}"
   when: item.stat.exists == False
- 
+
 - name: Start services after cert has been generated.
   service:
    name: "{{ item }}"
-    state: started
+   state: started
   with_items: "{{ certbot_create_standalone_stop_services }}"
