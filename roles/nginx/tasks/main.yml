@@ -75,9 +75,9 @@
   loop:
     - 404.html
     - 50x.html
-    # - index.html
-    # - nginx-logo.png
-    # - poweredby.png
+    - index.html
+    - nginx-logo.png
+    - poweredby.png
 
 - name: start nginx
   service:
