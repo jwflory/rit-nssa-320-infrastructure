@@ -1,5 +1,5 @@
 ---
-- name: set up webserver
+- name: Set up webserver
   hosts: webserver
   become: yes
 
