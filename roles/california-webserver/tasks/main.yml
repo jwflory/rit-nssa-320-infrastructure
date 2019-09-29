@@ -1,0 +1,39 @@
+---
+- name: Import global variables
+  include_vars:
+    dir: "{{ inventory_dir }}/group_vars/"
+
+- name: install/upgrade nginx
+  package:
+    name: nginx
+    state: latest
+
+- name: Pull website files from repo to ansible
+  git:
+    repo: https://github.com/BonjeBongo/Explore_California_Website.git
+    dest: "/tmp/"
+    archive: california.zip
+
+- name: Unpack webserver files for nginx to handle
+  unarchive:
+    src: "/tmp/california.zip"
+    dest: "/var/www/explorecalifornia.com/html/"
+    remote_src: yes
+    mode: '0755'
+    group: www-admin
+    owner: www-admin
+    setype: httpd_sys_content_t
+
+- name: get the template in place
+  template:
+    src: "files/explorecalifornia.conf"
+    dest: "/etc/nginx/sites-enabled/explorecalifornia.com"
+    serole: object_r
+    setype: httpd_config_t
+    seuser: system_u
+  notify: restart nginx
+
+- name: start nginx
+  service:
+    name: nginx
+    state: started
