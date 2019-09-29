@@ -14,6 +14,15 @@
     dest: "/tmp/"
     archive: california.zip
 
+- name: create webserver directory
+  file:
+    path: "/var/www/explorecalifornia.com/html/"
+    state: directory
+    mode: '0755'
+    group: www-admin
+    owner: www-admin
+    setype: httpd_sys_content_t
+
 - name: Unpack webserver files for nginx to handle
   unarchive:
     src: "/tmp/california.zip"
