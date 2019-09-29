@@ -7,4 +7,3 @@
     - { role: nginx, tags: nginx }
     - { role: php-fpm, tags: php-fpm }
     - { role: california-webserver, tags: california-webserver }
-    
