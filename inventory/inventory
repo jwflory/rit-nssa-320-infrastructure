@@ -10,8 +10,8 @@
 [ansiHost]
 10.0.1.3
 
-# [webserver]
-# 10.0.2.1
+[webserver]
+10.0.2.1
 
 [centos7]
 10.0.1.1
