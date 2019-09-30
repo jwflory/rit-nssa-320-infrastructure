@@ -1,0 +1,9 @@
+---
+- name: Set up webserver
+  hosts: webserver
+  become: yes
+
+  roles:
+    - { role: nginx, tags: nginx }
+    - { role: php-fpm, tags: php-fpm }
+    - { role: california-webserver, tags: california-webserver }
