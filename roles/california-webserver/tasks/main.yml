@@ -8,13 +8,6 @@
     name: nginx
     state: latest
 
-- name: Pull website files from repo to ansible
-  git:
-    repo: https://github.com/BonjeBongo/Explore_California_Website.git
-    #dest: "/tmp/california"
-    clone: no
-    archive: "/tmp/california.zip"
-
 - name: create webserver directory
   file:
     path: "/var/www/explorecalifornia.com/html/"
@@ -24,15 +17,20 @@
     owner: www-admin
     setype: httpd_sys_content_t
 
-- name: Unpack webserver files for nginx to handle
-  unarchive:
-    src: "/tmp/california.zip"
+- name: Pull website files from repo to ansible
+  git:
+    repo: https://github.com/BonjeBongo/Explore_California_Website.git
     dest: "/var/www/explorecalifornia.com/html/"
-    remote_src: yes
-    mode: '0755'
-    group: www-admin
-    owner: www-admin
-    setype: httpd_sys_content_t
+
+# - name: Unpack webserver files for nginx to handle
+#   unarchive:
+#     src: "/tmp/california.zip"
+#     dest: "/var/www/explorecalifornia.com/html/"
+#     remote_src: yes
+#     mode: '0755'
+#     group: www-admin
+#     owner: www-admin
+#     setype: httpd_sys_content_t
 
 - name: get the template in place
   template:
