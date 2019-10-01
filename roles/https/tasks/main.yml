@@ -5,7 +5,7 @@
 
 - name: Install Certbot's Nginx package
   yum:
-   name: python2-certbot-nginx-0.38.0-1.el7.noarch.rpm
+   name: python2-certbot-nginx
    state: present
 
 - name: Check if certificate already exists.
