@@ -22,16 +22,6 @@
     repo: https://github.com/BonjeBongo/Explore_California_Website.git
     dest: "/var/www/explorecalifornia.com/html/"
 
-# - name: Unpack webserver files for nginx to handle
-#   unarchive:
-#     src: "/tmp/california.zip"
-#     dest: "/var/www/explorecalifornia.com/html/"
-#     remote_src: yes
-#     mode: '0755'
-#     group: www-admin
-#     owner: www-admin
-#     setype: httpd_sys_content_t
-
 - name: get the template in place
   template:
     src: "files/explorecalifornia.conf"
@@ -40,8 +30,3 @@
     setype: httpd_config_t
     seuser: system_u
   notify: restart nginx
-
-- name: start nginx
-  service:
-    name: nginx
-    state: started
