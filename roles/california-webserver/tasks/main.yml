@@ -11,7 +11,7 @@
 - name: Pull website files from repo to ansible
   git:
     repo: https://github.com/BonjeBongo/Explore_California_Website.git
-    dest: "/tmp/"
+    dest: "/tmp/california"
     archive: california.zip
 
 - name: create webserver directory
