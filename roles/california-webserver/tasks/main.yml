@@ -30,4 +30,3 @@
     setype: httpd_config_t
     seuser: system_u
   notify: restart nginx
-  
