@@ -3,11 +3,26 @@
   hosts: webserver
   become: yes
 
-- name: Import Vault-encrypted variables
-  include_vars:
-    dir: "{{ inventory_dit }}/vault.yml"
+  pre_tasks:
+    - name: Import Vault-encrypted variables
+      include_vars:
+        dir: "{{ inventory_dit }}/vault.yml"
 
-  roles:
-    - { role: nginx, tags: nginx }
-    - { role: php-fpm, tags: php-fpm }
-    - { role: california-webserver, tags: california-webserver }
+  tasks:
+    - include_role:
+        name: nginx
+      tags:
+        - nginx
+        - webserver
+    
+    - include_role:
+        name: php-fpm
+      tags: 
+        - php-fpm
+        - webserver
+    
+    - include_role:
+        name: california-webserver
+      tags:
+        - california-webserver
+        - webserver

@@ -3,11 +3,27 @@
   hosts: centos7
   become: yes
 
-- name: import Vault-encrypted variables
-  include_vars:
-    dir: "{{ inventory_dit }}/vault.yml"
+  pre_tasks:
+    - name: import Vault-encrypted variables
+      include_vars:
+        dir: "{{ inventory_dit }}/vault.yml"
 
-  roles:
-    - { role: base/centos-7, tags: base }
-    - { role: firewalld, tags: firewalld }
-    - { role: yum-cron, tags: yum-cron }
+    
+  tasks:
+    - include_role:
+        name: base/centos-7
+      tags: 
+        - base
+        - centos-7
+      
+    - include_role:
+        name: firewalld
+      tags: 
+        - firewalld
+        - centos-7
+      
+    - include_role:
+        name: yum-cron
+      tags: 
+        - yum-cron
+        - centos-7
