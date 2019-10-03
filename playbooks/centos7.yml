@@ -8,20 +8,19 @@
       include_vars:
         dir: "{{ inventory_dir }}/group_vars/vault.yml"
 
-    
   tasks:
     - include_role:
         name: base/centos-7
       tags: 
         - base
         - centos-7
-      
+    
     - include_role:
         name: firewalld
       tags: 
         - firewalld
         - centos-7
-      
+    
     - include_role:
         name: yum-cron
       tags: 

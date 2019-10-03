@@ -17,7 +17,7 @@
     
     - include_role:
         name: php-fpm
-      tags: 
+      tags:
         - php-fpm
         - webserver
     
