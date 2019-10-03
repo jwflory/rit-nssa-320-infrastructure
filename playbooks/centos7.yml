@@ -6,7 +6,7 @@
   pre_tasks:
     - name: import Vault-encrypted variables
       include_vars:
-        dir: "{{ inventory_dit }}/vault.yml"
+        dir: "{{ inventory_dir }}/group_vars/vault.yml"
 
     
   tasks:
