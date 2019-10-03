@@ -3,6 +3,10 @@
   hosts: centos7
   become: yes
 
+- name: import Vault-encrypted variables
+  include_vars:
+    dir: "{{ inventory_dit }}/vault.yml"
+
   roles:
     - { role: base/centos-7, tags: base }
     - { role: firewalld, tags: firewalld }

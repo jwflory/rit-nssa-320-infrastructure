@@ -3,6 +3,10 @@
   hosts: webserver
   become: yes
 
+- name: Import Vault-encrypted variables
+  include_vars:
+    dir: "{{ inventory_dit }}/vault.yml"
+
   roles:
     - { role: nginx, tags: nginx }
     - { role: php-fpm, tags: php-fpm }

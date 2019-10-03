@@ -1,8 +1,4 @@
 ---
-- name: import Vault-encrypted variables
-  include_vars:
-    dir: "{{ inventory_dit }}/vault.yml"
-
 - import_playbook: centos7.yml
 
 - import_playbook: webserver.yml
