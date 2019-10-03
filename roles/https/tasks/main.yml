@@ -3,16 +3,9 @@
   include_vars:
     dir: "{{ inventory_dir }}/group_vars/"
 
-- name: Upgrade System
-  apt: upgrade=dist update_cache=yes
-
-- name: Add certbot repository
-  apt_repository:
-   repo: 'ppa:certbot/certbot'
-
 - name: Install Certbot's Nginx package
-  apt:
-   name: python-certbot-nginx
+  yum:
+   name: python2-certbot-nginx
    state: present
 
 - name: Check if certificate already exists.
