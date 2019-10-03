@@ -3,7 +3,12 @@
   include_vars:
     dir: "{{ inventory_dir }}/group_vars/"
 
-- name: create webserver directory
+- name: Check for nginx
+  package:
+    name: nginx
+    state: present
+
+- name: Create webserver directory
   file:
     path: "/var/www/explorecalifornia.com/html/"
     state: directory
@@ -17,7 +22,7 @@
     repo: https://github.com/BonjeBongo/Explore_California_Website.git
     dest: "/var/www/explorecalifornia.com/html/"
 
-- name: get the template in place
+- name: Get the template in place
   template:
     src: "files/explorecalifornia.conf"
     dest: "/etc/nginx/conf.d/"
@@ -25,3 +30,4 @@
     setype: httpd_config_t
     seuser: system_u
   notify: restart nginx
+  
