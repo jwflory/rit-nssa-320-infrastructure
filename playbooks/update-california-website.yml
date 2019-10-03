@@ -1,0 +1,11 @@
+---
+- name: Update california-website
+  hosts: webserver
+  become: yes
+
+  tasks:
+    - include_role:
+        name: california-webserver
+      tags:
+        - california-webserver
+        - webserver
