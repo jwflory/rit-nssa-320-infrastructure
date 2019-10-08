@@ -1,0 +1,21 @@
+---
+- name: Import global variables
+  include_vars:
+    dir: "{{ inventory_dir }}/group_vars/"
+
+- name: Create webserver directory
+  file:
+    path: "/var/audit"
+    state: directory
+    mode: '0755'
+    group: admin
+    owner: admin
+
+- name: Pull script from repo to ansible
+  git:
+    repo: https://github.com/BonjeBongo/NSSA320.01_Security_Scripts.git
+    dest: "/tmp/audit"
+
+- name: run audit script
+  script: /tmp/audit/NSSA320.01_Security_Scrtipt/audit_script.sh
+#ToDo: zip log files on remote, fetch them to ansible
