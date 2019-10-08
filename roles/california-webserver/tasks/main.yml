@@ -3,12 +3,12 @@
   include_vars:
     dir: "{{ inventory_dir }}/group_vars/"
 
-- name: install/upgrade nginx
+- name: Check for nginx
   package:
     name: nginx
-    state: latest
+    state: present
 
-- name: create webserver directory
+- name: Create webserver directory
   file:
     path: "/var/www/explorecalifornia.com/html/"
     state: directory
@@ -22,26 +22,11 @@
     repo: https://github.com/BonjeBongo/Explore_California_Website.git
     dest: "/var/www/explorecalifornia.com/html/"
 
-# - name: Unpack webserver files for nginx to handle
-#   unarchive:
-#     src: "/tmp/california.zip"
-#     dest: "/var/www/explorecalifornia.com/html/"
-#     remote_src: yes
-#     mode: '0755'
-#     group: www-admin
-#     owner: www-admin
-#     setype: httpd_sys_content_t
-
-- name: get the template in place
+- name: Get the template in place
   template:
     src: "files/explorecalifornia.conf"
-    dest: "/etc/nginx/nginx.conf"
+    dest: "/etc/nginx/conf.d/"
     serole: object_r
     setype: httpd_config_t
     seuser: system_u
   notify: restart nginx
-
-- name: start nginx
-  service:
-    name: nginx
-    state: started

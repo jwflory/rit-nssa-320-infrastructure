@@ -11,7 +11,6 @@
       - php72u-gd
       - php72u-json
       - php72u-mbstring
-      #- php72u-mcrypt
       - php72u-mysqlnd
       - php72u-pecl-imagick
       - php72u-xml

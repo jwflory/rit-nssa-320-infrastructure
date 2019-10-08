@@ -3,7 +3,21 @@
   hosts: webserver
   become: yes
 
-  roles:
-    - { role: nginx, tags: nginx }
-    - { role: php-fpm, tags: php-fpm }
-    - { role: california-webserver, tags: california-webserver }
+  tasks:
+    - include_role:
+        name: nginx
+      tags:
+        - nginx
+        - webserver
+
+    - include_role:
+        name: php-fpm
+      tags:
+        - php-fpm
+        - webserver
+
+    - include_role:
+        name: california-webserver
+      tags:
+        - california-webserver
+        - webserver
