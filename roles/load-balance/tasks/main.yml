@@ -3,11 +3,6 @@
   include_vars:
     dir: "{{ inventory_dir }}/group_vars/"
 
-- name: Check for nginx
-  package:
-    name: nginx
-    state: present
-
 - name: Get the config in place
   template:
     src: "files/load-balancer.conf"
