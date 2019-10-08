@@ -13,6 +13,9 @@
 [webserver]
 10.0.2.1
 
+[load-balancer]
+# 10.0.?.?
+
 [centos7]
 10.0.1.1
 10.0.1.2
@@ -25,6 +28,7 @@ ansible_password=student
 
 [centos7:children]
 webserver
+load-balancer
 
 [rhel8]
 10.0.1.5  # standalone RHEL 8 server to experiment with
