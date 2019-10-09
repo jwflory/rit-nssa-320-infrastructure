@@ -25,6 +25,7 @@
 10.0.2.1
 10.0.2.2
 10.0.2.3
+10.0.2.4
 
 [centos7:vars]
 ansible_user=root
