@@ -1,0 +1,13 @@
+---
+- name: Import global variables
+  include_vars:
+    dir: "{{ inventory_dir }}/group_vars/"
+
+- name: Get the config in place
+  template:
+    src: "files/load-balancer.conf"
+    dest: "/etc/nginx/conf.d/"
+    serole: object_r
+    setype: httpd_config_t
+    seuser: system_u
+  notify: restart nginx
