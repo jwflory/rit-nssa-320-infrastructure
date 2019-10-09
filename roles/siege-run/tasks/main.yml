@@ -1,0 +1,36 @@
+---
+# to-do (coppied from mycourses load-generator.yml example)
+vars_prompt:
+- name: "num"
+  prompt: "Please enter the number of users you wish to use"
+  private: no
+
+- name: "time"
+  prompt: "Please enter time limit for which you want siege to run (e.g:10s, 10m, 10h)"
+  private: no
+
+- name: "delays"
+  prompt: "Set the delay for each user"
+  private: no
+
+- name: "file"
+  prompt: "Enter file containing multiple urls"
+  private: no
+
+tasks:
+- name: Generating Load
+  command: "siege -c {{num}} -t{{time}} -d {{delays}} -f {{file}} -l localhost" 
+  register: output
+
+- debug:
+    var: output
+
+# In the command line, "-l" represents generation of a log file, which can be changed as per the your needs in the siege's configuration file located in  "~/.siege/siege.conf". Also, "-f" file, is the urls.txt file, which can be created manually to enlist a number of urls that you want to hit. 
+
+# In the command line "localhost" is your assumed webserver.
+
+# There are multiple variables that can be still used as per your need, in-orer to find them, all you need to do is apply "-h" help variable after siege command, and you will  be set.
+
+# Also, if you only do "siege webserver", it will still work, with all the default values set, to llok at default values you can read the configuration file (path given above :)
+
+# Thank you!
