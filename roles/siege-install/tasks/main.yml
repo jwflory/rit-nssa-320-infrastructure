@@ -46,3 +46,15 @@
   args: 
     chdir: /etc/siege/{{ new.results[0].stdout_lines[0] }} #/etc/siege/siege-4.0.4/
   register: all
+
+- name: Configure Siege
+  template:
+    src: "files/siege.conf"
+    dest: "/.sigerc"
+    seuser: system_u
+
+- name: Push hosts file
+  template:
+    src: "files/hosts.conf"
+    dest: "/usr/local/etc/urls.txt"
+    seuser: system_u

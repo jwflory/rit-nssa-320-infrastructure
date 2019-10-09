@@ -1,5 +1,5 @@
 ---
-- name: Install and run siege on ansible host
+- name: Install siege on ansible host
   hosts: ansiHost
   become: yes
 
@@ -9,7 +9,7 @@
       tags:
         - siege
 
-    - include_role:
-        name: siege-run
-      tags:
-        - siege
+    # - include_role:
+    #     name: siege-run
+    #   tags:
+    #     - siege
