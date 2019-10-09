@@ -1,0 +1,17 @@
+---
+- name: set up load balancer
+  hosts: load-balancer
+  become: yes
+
+  tasks:
+    - include_role:
+        name: nginx
+      tags:
+        - nginx
+        - load-balancer
+
+    - include_role:
+        name: load-balance
+      tags:
+        - nginx
+        - load-balancer
