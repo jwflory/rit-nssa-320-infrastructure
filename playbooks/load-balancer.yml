@@ -9,7 +9,7 @@
       tags:
         - nginx
         - load-balancer
-    
+
     - include_role:
         name: load-balance
       tags:
