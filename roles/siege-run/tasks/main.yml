@@ -1,5 +1,17 @@
 ---
-# to-do (coppied from mycourses load-generator.yml example)
+# Coppied from mycourses load-generator.yml example
+- name: Configure Siege
+  template:
+    src: "files/siege.conf"
+    dest: "/.sigerc"
+    seuser: system_u
+
+- name: Push hosts file
+  template:
+    src: "files/hosts.conf"
+    dest: "/usr/local/etc/urls.txt"
+    seuser: system_u
+
 - name: Generating Load
-  command: "siege -f /path/to/file.txt" # put all relevant ips in to the hosts file
+  command: "siege"
   register: output
