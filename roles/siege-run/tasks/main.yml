@@ -1,0 +1,16 @@
+---
+# Coppied from mycourses load-generator.yml example
+- name: Configure Siege
+  template:
+    src: "files/siege.conf"
+    dest: "/.siegerc"
+    seuser: system_u
+
+- name: Push hosts file
+  template:
+    src: "files/hosts.conf"
+    dest: "/usr/local/etc/urls.txt"
+    seuser: system_u
+
+- name: Generating Load
+  command: "siege"
