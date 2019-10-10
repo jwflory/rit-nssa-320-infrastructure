@@ -3,7 +3,7 @@
 - name: Configure Siege
   template:
     src: "files/siege.conf"
-    dest: "/.sigerc"
+    dest: "/.siegerc"
     seuser: system_u
 
 - name: Push hosts file
@@ -14,4 +14,3 @@
 
 - name: Generating Load
   command: "siege"
-  register: output
