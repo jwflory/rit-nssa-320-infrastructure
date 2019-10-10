@@ -1,5 +1,5 @@
 ---
-- name: install/update siege
+- name: install siege
   package:
     state: present
     name: siege
