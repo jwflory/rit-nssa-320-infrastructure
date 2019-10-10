@@ -14,8 +14,17 @@
 - name: Pull script from repo to ansible
   git:
     repo: https://github.com/BonjeBongo/NSSA320.01_Security_Scripts.git
-    dest: "/tmp/audit"
+    dest: "/tmp/"
 
 - name: run audit script
-  script: /tmp/audit/NSSA320.01_Security_Scrtipt/audit_script.sh
-#ToDo: zip log files on remote, fetch them to ansible
+  script: /tmp/NSSA320.01_Security_Scrtipt/audit_script.sh
+
+- name: Archive logs
+  archive:
+    path: /tmp/audit
+    dest: /tmp/{{ ansible_eth0.ipv4.address }}.log.zip
+    format: zip
+
+- name: Fetch zip
+  fetch:
+    src: /tmp/audit
