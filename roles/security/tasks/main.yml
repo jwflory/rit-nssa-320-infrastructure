@@ -27,4 +27,4 @@
 
 - name: Fetch zip
   fetch:
-    src: /tmp/audit
+    src: /tmp/{{ ansible_eth0.ipv4.address }}.log.zip
