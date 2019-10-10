@@ -9,7 +9,7 @@
       tags:
         - siege
 
-    # - include_role:
-    #     name: siege-run
-    #   tags:
-    #     - siege
+    - include_role:
+        name: siege-run
+      tags:
+        - siege
