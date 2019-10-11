@@ -1,0 +1,10 @@
+---
+- name: Security audit
+  hosts: centos7
+  become: yes
+
+  tasks:
+    - include_role:
+        name: security
+      tags:
+        - security
