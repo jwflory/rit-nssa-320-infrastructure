@@ -8,8 +8,10 @@
         name: siege-install
       tags:
         - siege
+        - siege-install
 
     - include_role:
         name: siege-run
       tags:
         - siege
+        - siege-run

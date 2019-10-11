@@ -7,7 +7,7 @@
   file:
     path: "/var/audit"
     state: directory
-    mode: '0755'
+    mode: "0755"
     group: admin
     owner: admin
 
@@ -25,6 +25,6 @@
     dest: /tmp/{{ ansible_eth0.ipv4.address }}.log.zip
     format: zip
 
-- name: Fetch zip
-  fetch:
-    src: /tmp/{{ ansible_eth0.ipv4.address }}.log.zip
+# - name: Fetch zip
+#   fetch:
+#     src: /tmp/{{ ansible_eth0.ipv4.address }}.log.zip
