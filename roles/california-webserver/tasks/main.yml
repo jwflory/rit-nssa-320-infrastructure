@@ -7,7 +7,8 @@
   package:
     name: nginx
     state: present
-
+    lock_timout: 180
+    
 - name: Create webserver directory
   file:
     path: "/var/www/explorecalifornia.com/html/"
