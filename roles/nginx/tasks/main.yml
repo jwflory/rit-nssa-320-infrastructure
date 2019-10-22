@@ -7,6 +7,7 @@
   package:
     name: nginx
     state: latest
+    lock_timeout: 180
 
 - name: configure nginx
   template:
