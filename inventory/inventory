@@ -2,38 +2,39 @@
 127.0.0.1 ansible_connection=local
 
 [production]
-10.0.1.1
+goldenimage1 #10.0.1.1
 
 [staging]
-10.0.1.2
+goldenimage2 #10.0.1.2
 
 [ansiHost]
-10.0.1.3
+ansibleHost #10.0.1.3
 
 [webserver]
-10.0.2.1
-10.0.2.2
-10.0.2.3
+webserver1 #10.0.2.1
+webserver2 #10.0.2.2
+webserver3 #10.0.2.3
 
-[load-balancer]
-10.0.2.4
+[loadbalancer]
+loadbalancer #10.0.2.4
 
 [centos7]
-10.0.1.1
-10.0.1.2
-10.0.1.3
-10.0.2.1
-10.0.2.2
-10.0.2.3
-10.0.2.4
+goldenimage1 #10.0.1.1
+goldenimage2 #10.0.1.2
+#10.0.1.3
+#10.0.2.1
+#10.0.2.2
+#10.0.2.3
+#10.0.2.4
 
 [centos7:vars]
 ansible_user=root
 ansible_password=student
 
 [centos7:children]
+ansiHost
 webserver
-load-balancer
+loadbalancer
 
 [rhel8]
 10.0.1.5  # standalone RHEL 8 server to experiment with
