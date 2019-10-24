@@ -1,5 +1,4 @@
 ---
-# Coppied from mycourses load-generator.yml example
 - name: copy Siege config in place
   copy:
     src: siege.conf
