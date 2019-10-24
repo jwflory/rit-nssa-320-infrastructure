@@ -18,6 +18,12 @@ webserver3 #10.0.2.3
 [loadbalancer]
 loadbalancer #10.0.2.4
 
+[monitorserver]
+monitorserver #10.0.2.5
+
+[loadgenerator]
+loadgenerator #10.0.2.6
+
 [centos7]
 goldenimage1 #10.0.1.1
 goldenimage2 #10.0.1.2

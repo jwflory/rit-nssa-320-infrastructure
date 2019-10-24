@@ -3,7 +3,7 @@
 - name: Configure Siege
   template:
     src: "files/siege.conf"
-    dest: "/usr/bin/siege.conf"
+    dest: "~/.siege/siege.conf"
     seuser: system_u
 
 - name: Push hosts file
