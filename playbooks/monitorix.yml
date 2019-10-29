@@ -1,0 +1,10 @@
+---
+- name: set up load balancer
+  hosts: centos7
+  become: yes
+
+  tasks:
+    - include_role:
+        name: monitorix
+      tags:
+        - monitorix

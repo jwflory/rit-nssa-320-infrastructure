@@ -1,0 +1,6 @@
+---
+- name: restart monitorix
+  service:
+    name: monitorix
+    state: restarted
+    enabled: yes
