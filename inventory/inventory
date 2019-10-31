@@ -2,18 +2,18 @@
 127.0.0.1 ansible_connection=local
 
 [production]
-goldenimage1 #10.0.1.1
+10.0.1.1
 
 [staging]
-goldenimage2 #10.0.1.2
+10.0.1.2
 
 [ansiHost]
-ansibleHost #10.0.1.3
+10.0.1.3
 
 [webserver]
-webserver1 #10.0.2.1
-webserver2 #10.0.2.2
-webserver3 #10.0.2.3
+10.0.2.1
+10.0.2.2
+10.0.2.3
 
 [loadbalancer]
 10.0.2.4
@@ -25,13 +25,15 @@ webserver3 #10.0.2.3
 10.0.2.6
 
 [centos7]
-goldenimage1 #10.0.1.1
-goldenimage2 #10.0.1.2
+10.0.1.1
+10.0.1.2
 #10.0.1.3
 #10.0.2.1
 #10.0.2.2
 #10.0.2.3
 #10.0.2.4
+#10.0.2.5
+#10.0.2.6
 
 [centos7:vars]
 ansible_user=root
