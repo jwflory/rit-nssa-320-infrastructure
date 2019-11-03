@@ -2,13 +2,13 @@
 # Coppied from mycourses load-generator.yml example
 - name: Configure Siege
   template:
-    src: "files/siege.conf"
+    src: siege.conf
     dest: "~/.siege/siege.conf"
     seuser: system_u
 
 - name: Push hosts file
   template:
-    src: "files/hosts.conf"
+    src: hosts.conf
     dest: "/usr/local/etc/urls.txt"
     seuser: system_u
 
