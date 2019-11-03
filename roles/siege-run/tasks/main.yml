@@ -1,15 +1,17 @@
 ---
 # Coppied from mycourses load-generator.yml example
-- name: Configure Siege
-  template:
+- name: copy Siege config in place
+  copy:
     src: siege.conf
     dest: "~/.siege/siege.conf"
+    mode: 0644
     seuser: system_u
 
-- name: Push hosts file
-  template:
+- name: copy hosts file
+  copy:
     src: hosts.conf
     dest: "/usr/local/etc/urls.txt"
+    mode: 0644
     seuser: system_u
 
 - name: Generating Load
