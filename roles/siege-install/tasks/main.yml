@@ -1,4 +1,9 @@
 ---
+- name: ensure EPEL repositories are installed and latest (for Siege)
+  package:
+    state: latest
+    name: epel-release
+
 - name: install siege
   package:
     state: present
