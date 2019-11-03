@@ -8,8 +8,8 @@
     path: "/var/audit"
     state: directory
     mode: "0755"
-    group: admin
-    owner: admin
+    group: "admin"
+    owner: "admin"
 
 - name: Pull script from repo to ansible
   git:
