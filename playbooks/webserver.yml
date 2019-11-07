@@ -11,12 +11,6 @@
         - webserver
 
     - include_role:
-        name: php-fpm
-      tags:
-        - php-fpm
-        - webserver
-
-    - include_role:
         name: california-webserver
       tags:
         - california-webserver
