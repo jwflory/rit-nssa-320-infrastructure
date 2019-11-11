@@ -1,12 +1,6 @@
 [dev]
 127.0.0.1 ansible_connection=local
 
-[production]
-10.0.1.1
-
-[staging]
-10.0.1.2
-
 [ansiHost]
 10.0.1.3
 
@@ -18,20 +12,27 @@
 [loadbalancer]
 10.0.2.4
 
-[monitorserver]
-10.0.2.5
-
 [loadgenerator]
 10.0.2.6
 
+[influxdb]
+10.0.3.1
+
+[containerhost]
+10.0.3.2
+10.0.3.3
+10.0.3.4
+
 [centos7]
-10.0.1.1
-10.0.1.2
 10.0.1.3
 10.0.2.1
 10.0.2.2
 10.0.2.3
 10.0.2.4
+10.0.3.1
+10.0.3.2
+10.0.3.3
+10.0.3.4
 
 [centos7:vars]
 ansible_user=root
