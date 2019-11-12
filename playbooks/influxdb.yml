@@ -1,0 +1,7 @@
+---
+- name: Install/manage an InfluxDB server.
+  hosts: influxdb
+  become: true
+
+  roles:
+  - { role: jwflory.influxdb, tags: ['influxdb', 'database'] }
