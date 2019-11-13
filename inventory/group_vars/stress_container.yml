@@ -1,0 +1,27 @@
+---
+#container name (should be 'progrium/stress' ! NOT TESTED CAUSE RLES IS DOWN)>
+container: "progrium/stress"
+
+#<custom name for reference>\
+name: "stress"
+
+#<volume name>
+volume: "stress_vol"
+
+#<spawn N workers spinning on sqrt()>
+cpu_workers: "2"
+
+#<spawn N workers spinning on sync()>
+io_workers: "2"
+
+#<spawn N workers spinning on malloc()/free()>
+vm_workers: "2"
+
+#<malloc B bytes per vm worker (default is 256MB)>
+vm_size: "256MB"
+
+#<spawn N workers spinning on write()/unlink()>
+hdd_workers: "1"
+
+#<write B bytes per hdd worker (default 1G)>
+hdd_size: "1G"

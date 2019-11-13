@@ -1,0 +1,15 @@
+# run playbook as:
+# ansible-playbook playbook/podman --extra-vars "\
+# name=<custom name for reference>\
+
+---
+- name: stop the running container
+  hosts: containerhost
+  become: yes
+
+  tasks:
+    - include_role:
+        name: podman-destroy
+      tags:
+        - podman
+        - podman-destroy

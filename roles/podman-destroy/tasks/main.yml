@@ -1,0 +1,14 @@
+# run role as:
+# ansible-playbook playbook/podman --extra-vars "\
+# name=<custom name for reference>\
+
+---
+- name: import global variables
+  include_vars:
+    dir: "{{ inventory_dir }}/group_vars/"
+
+- name: stop container
+  command: podman stop {{name}}
+
+- name: remove container
+  command: podman rm {{name}}
