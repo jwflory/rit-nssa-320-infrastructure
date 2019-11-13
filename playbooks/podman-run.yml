@@ -1,0 +1,29 @@
+# run playbook as:
+# ansible-playbook playbook/podman --extra-vars "\
+# container=<container name (should be 'progrium/stress')>\
+# name=<custom name for reference>\
+# volume=<volume name (name it 'stress_vol')>\
+# cpu_workers=<spawn N workers spinning on sqrt()>\
+# io_workers=<spawn N workers spinning on sync()>\
+# vm_workers=<spawn N workers spinning on malloc()/free()>\
+# vm_size=<malloc B bytes per vm worker (default is 256MB)>
+# hdd_workers=<spawn N workers spinning on write()/unlink()>\
+# hdd_size=<write B bytes per hdd worker>"
+
+---
+- name: configure container host
+  hosts: containerhost
+  become: yes
+
+  tasks:
+    - include_role:
+        name: podman-install
+      tags:
+        - podman
+        - podman-install
+
+    - include_role:
+        name: podman-create
+      tags:
+        - podman
+        - podman-run-container

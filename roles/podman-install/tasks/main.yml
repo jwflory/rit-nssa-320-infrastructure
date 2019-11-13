@@ -1,0 +1,9 @@
+---
+- name: install/upgrade podman
+  package:
+    name: podman
+    state: present
+
+- name: pull a stress image for podman
+  podman_image:
+    name: docker://docker.io/progrium/stress
