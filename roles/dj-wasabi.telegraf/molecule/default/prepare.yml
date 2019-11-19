@@ -9,21 +9,4 @@
       when:
         - ansible_os_family == 'RedHat'
 
-    - name: "Installing packages on Debian"
-      apt:
-        name:
-          - wget
-          - gpg
-        state: present
-      when:
-        - ansible_os_family == 'Debian'
 
-    - name: "Installing packages on Suse"
-      zypper:
-        name:
-          - sysvinit-tools
-          - insserv-compat
-          - aaa_base
-        state: present
-      when:
-        - ansible_os_family == 'Suse'
