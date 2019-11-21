@@ -1,7 +1,7 @@
 ---
 # Hostname/FQDN of InfluxDB server. If using TLS, set this to the domain or
 # subdomain associated with the HTTPS certificate.
-db_fqdn: "10.0.2.5"
+db_fqdn: "10.0.3.1"
 
 # HTTP settings in the InfluxDB config file. These settings track changes from
 # the default config file. The intention is to provide an easier upgrade path

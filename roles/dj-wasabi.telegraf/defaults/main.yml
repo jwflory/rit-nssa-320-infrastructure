@@ -19,7 +19,7 @@ telegraf_agent_aws_tags_prefix: ""
 # Docker specific settings
 telegraf_uid_docker: 998
 telegraf_gid_docker: 995
-telegraf_agent_docker: False
+telegraf_agent_docker: true
 telegraf_agent_docker_name: telegraf
 telegraf_agent_docker_network_mode: bridge
 telegraf_agent_docker_restart_policy: unless-stopped
@@ -39,7 +39,7 @@ telegraf_global_tags: []
 telegraf_agent_output:
   - type: influxdb
     config:
-      - urls = ["http://localhost:8086"]
+      - urls = ["http://10.0.3.5:8086"]
       - database = "telegraf"
       - precision = "s"
 
