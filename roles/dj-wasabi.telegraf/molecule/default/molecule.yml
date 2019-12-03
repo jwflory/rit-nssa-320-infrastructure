@@ -67,7 +67,7 @@ provisioner:
         telegraf_agent_output:
           - type: influxdb
             config:
-              - urls = ["http://influxdb:8086"]
+              - urls = ["http://10.0.3.1:8086"]
               - database = "telegraf"
               - precision = "s"
         telegraf_plugins_extra:
