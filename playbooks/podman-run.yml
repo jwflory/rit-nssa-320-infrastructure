@@ -13,6 +13,7 @@
 ---
 - name: configure container host
   hosts: containerhost
+  strategy: free
   become: yes
 
   tasks:
