@@ -7,6 +7,14 @@
   include_vars:
     dir: "{{ inventory_dir }}/group_vars/"
 
+- name: prune unused volumes
+  command: podman volume prune -f
+
+- name: remove volume files
+  file:
+    path: "/docker/{{container}}"
+    state: absent
+
 - name: stop container
   command: podman stop {{name}}
 
