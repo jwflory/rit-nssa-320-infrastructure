@@ -20,6 +20,9 @@
     state: directory
     path: "/docker/{{container}}"
 
+- name: prune unused volumes
+  command: podman volume prune -f
+
 - name: make a volume
   command: podman volume create {{volume}}
 
